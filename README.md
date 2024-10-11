@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -64,3 +65,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# GestionStockSGF
+Système de gestion des stocks d'hydrocarbures (essence, diesel, etc.) dans plusieurs dépôts. Suivi des mouvements de carburants, gestion des utilisateurs et rôles, et génération de rapports hebdomadaires. Assure la cohérence des données comptables et gère les différentes unités fiscales des distributeurs.
+>>>>>>> 23bfbf1082cc26a9184dc7e43606ab38e54ed2d4
