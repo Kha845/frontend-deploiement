@@ -23,6 +23,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('matricule');
+            $table->boolean('etat')->nullable()->default(false);
             $table->unsignedBigInteger('role_id')->nullable(); 
             $table->foreign('role_id') // Clé étrangère vers la table 'roles'
                 ->references('id')

@@ -4,6 +4,10 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Role;
+
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -18,11 +22,17 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+           'idUser' => $this->faker->unique()->numberBetween(1, 1000),
+            'prenom' => $this->faker->firstName(),
+            'nom' => $this->faker->lastName(),
+            'adresseSGF' => $this->faker->address(),
+            'telephone' => $this->faker->phoneNumber(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'password' => Hash::make('password'), // Vous pouvez changer le mot de passe par défaut
+            'matricule' => $this->faker->unique()->word(),
+            'role_id' => Role::factory(),
+            'poste' => $this->faker->jobTitle(),
+            'etat' => false,
         ];
     }
 

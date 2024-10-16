@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\UserSgf;
+use App\Models\User;
 use App\Models\Fournisseur;
 use App\Models\Depot;
 use App\Models\Stokeur;
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         // Stokeur::factory(4)->create();
         // Depot::factory(4)->create();
         Role::factory()->count(5)->create();
-        UserSgf::factory(5)->create();
+        User::factory(5)->create();
         // Client::factory(5)->create();
         // StationService::factory(5)->create();
         // Boulangerie::factory(5)->create();
