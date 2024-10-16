@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Role;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UserSgf>
@@ -26,6 +27,7 @@ class UserSgfFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'), // Vous pouvez changer le mot de passe par défaut
             'matricule' => $this->faker->unique()->word(),
+            'role_id' => Role::factory(),
             'poste' => $this->faker->jobTitle(),
         ];
     }

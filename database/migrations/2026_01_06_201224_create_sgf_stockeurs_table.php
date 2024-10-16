@@ -18,7 +18,7 @@ return new class extends Migration
     
             // Colonne pour la clé étrangère vers 'user_sgfs'
             $table->unsignedBigInteger('idUser');
-            $table->foreign('idUser')->references('idUser')->on('user_sgfs')->onDelete('cascade');
+            $table->foreign('idUser')->references('idUser')->on('users')->onDelete('cascade');
             
             // Colonne pour la clé étrangère vers 'stokeurs'
             $table->unsignedBigInteger('idStokeur'); 

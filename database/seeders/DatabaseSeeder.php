@@ -20,6 +20,7 @@ use App\Models\SGFFournisseurs;
 use App\Models\SGFStockeurs;
 use App\Models\SGFCamionCiternes;
 use App\Models\SGFClients;
+use App\Models\Role;
 
 use Illuminate\Database\Seeder;
 
@@ -33,29 +34,30 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //factory fournisseur pour creer 5lignes 
-        Fournisseur::factory(5)->create();
-        Stokeur::factory(4)->create();
-        Depot::factory(4)->create();
+        // Fournisseur::factory(5)->create();
+        // Stokeur::factory(4)->create();
+        // Depot::factory(4)->create();
+        Role::factory()->count(5)->create();
         UserSgf::factory(5)->create();
-        Client::factory(5)->create();
-        StationService::factory(5)->create();
-        Boulangerie::factory(5)->create();
-        GarageAutomobile::factory(5)->create();
-        BonDeCommande::factory(5)->create([
-            'UniteDeMesure' => 'littre'
-        ]);
-        ModePaiement::factory(5)->create();
-        Facture::factory(10)->create([
-            'UniteDeMesure'=> 'Littre'
-        ]);
-        BonDeLivraison::factory(10)->create([
-            'UniteDeMesure'=> 'Littre'
-        ]);
-        CamionCiterne::factory(10)->create();
-        SGFFournisseurs::factory(5)->create();
-        //SGFStockeurs::factory(5)->create();
-        SGFCamionCiternes::factory(5)->create();
-        SGFClients::factory(5)->create();
+        // Client::factory(5)->create();
+        // StationService::factory(5)->create();
+        // Boulangerie::factory(5)->create();
+        // GarageAutomobile::factory(5)->create();
+        // BonDeCommande::factory(5)->create([
+        //     'UniteDeMesure' => 'littre'
+        // ]);
+        // ModePaiement::factory(5)->create();
+        // Facture::factory(10)->create([
+        //     'UniteDeMesure'=> 'Littre'
+        // ]);
+        // BonDeLivraison::factory(10)->create([
+        //     'UniteDeMesure'=> 'Littre'
+        // ]);
+        // CamionCiterne::factory(10)->create();
+        // SGFFournisseurs::factory(5)->create();
+        // //SGFStockeurs::factory(5)->create();
+        // SGFCamionCiternes::factory(5)->create();
+        // SGFClients::factory(5)->create();
         
 
         // \App\Models\User::factory(10)->create();

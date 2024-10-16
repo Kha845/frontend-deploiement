@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Client;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\GarageAutomobile>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
  */
-class GarageAutomobileFactory extends Factory
+class RoleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +17,7 @@ class GarageAutomobileFactory extends Factory
     public function definition()
     {
         return [
-            'idClient' => Client::factory(),
+            'nom_role' => $this->faker->randomElement(['Admin', 'Manager', 'User', 'Super Admin', 'Guest']),
         ];
     }
 }

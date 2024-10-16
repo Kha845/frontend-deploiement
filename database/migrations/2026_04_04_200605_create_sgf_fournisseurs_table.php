@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_sgf_fournisseurs', function (Blueprint $table) {
             $table->id(); // Clé primaire pour la table sgf_fournisseurs
             $table->unsignedBigInteger('idUser'); // Clé étrangère pour SGF
-            $table->foreign('idUser')->references('idUser')->on('user_sgfs')->onDelete('cascade'); // Clé étrangère vers 'sgfs'
+            $table->foreign('idUser')->references('idUser')->on('users')->onDelete('cascade'); // Clé étrangère vers 'sgfs'
             $table->unsignedBigInteger('idFournisseur'); // Clé étrangère pour Fournisseur
             $table->foreign('idFournisseur')->references('id')->on('fournisseurs')->onDelete('cascade'); // Clé étrangère vers 'fournisseurs'
             $table->timestamps();

@@ -13,15 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_sgfs', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id('idUser'); // Utilisation de 'idSGF' comme clé primaire
             $table->string('prenom');
             $table->string('nom');
             $table->string('adresseSGF');
             $table->string('telephone');
             $table->string('email');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('matricule');
+            $table->unsignedBigInteger('role_id')->nullable(); 
+            $table->foreign('role_id') // Clé étrangère vers la table 'roles'
+                ->references('id')
+                ->on('roles')
+                ->onDelete('set null');
             $table->string('poste');
             $table->timestamps();
         });
@@ -34,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_sgfs');
+        Schema::dropIfExists('users');
     }
 };

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_sgf_camion_citernes', function (Blueprint $table) {
             $table->id(); 
             $table->unsignedBigInteger('idUser'); 
-            $table->foreign('idUser')->references('idUser')->on('user_sgfs')->onDelete('cascade'); 
+            $table->foreign('idUser')->references('idUser')->on('users')->onDelete('cascade'); 
             $table->unsignedBigInteger('idCamionCiterne'); 
             $table->foreign('idCamionCiterne')->references('id')->on('camion_citernes')->onDelete('cascade'); 
             $table->timestamps();

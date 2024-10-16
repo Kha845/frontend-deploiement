@@ -2,43 +2,56 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $table = 'users';
+    protected $primaryKey = 'idUser';
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    protected $fillable = ['prenom', 'nom','adresseSGF', 'telephone', 'email', 'password', 'matricule', 'poste'];
+
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
+    public function fournisseurs()
+    {
+        return $this->belongsToMany(Fournisseur::class, 'user_sgf_fournisseurs', 'idUser', 'idFournisseur');
+    }
+
+    public function stockeurs()
+    {
+        return $this->belongsToMany(Stokeur::class, 'user_sgf_stockeurs', 'idUser', 'idStokeur');
+    }
+
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class, 'user_sgf_clients', 'idUser', 'idClient');
+    }
+
+    public function camionCiterne()
+    {
+        return $this->belongsToMany(CamionCiterne::class, 'user_sgf_camion_citernes', 'idUser', 'idCamionCiterne');
+    }
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
 }

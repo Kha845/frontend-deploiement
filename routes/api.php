@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\BonDeCommandeController;
 use App\Http\Controllers\Api\BonDeLivraisonController;
 use App\Http\Controllers\Api\FacturesController;
 use App\Http\Controllers\Api\StokeurDepotController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,21 +25,36 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['middleware' => 'api'], function ($router) {
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::get('me', [AuthController::class, 'me']);
+});
+
+
 //Route::apiResource('fournisseurs', FournisseurController::class);
 
 
 
-//Bon de commande dont les factures sont impayees, payes, en attente
-Route::get('/bon-de-commandes/impayes', [BonDeCommandeController::class, 'RecupFactImpaye']);
-//Bon de livraison avec les details des camions associe
-Route::get('/bon-livraisons', [BonDeLivraisonController::class, 'index']);
-//Bon de livraison avec les details d'un camion associe
-Route::get('/bon-livraisons/show', [BonDeLivraisonController::class, 'show']);
-//Montant total des factures payes
-Route::get('/factures-payees/total', [FacturesController::class, 'TotalFactPaye']);
-//Nombre de factures payer
-Route::get('/factures-payees/nombrefactpaye', [FacturesController::class, 'NombreFactImpaye']);
-//Récupérer les Stokeurs avec leurs dépôts associés
-Route::get('/stokeurs', [StokeurDepotController::class, 'index']);
-//Recuperer le depot d'un stokeur
-Route::get('/stokeurs/{id}', [StokeurDepotController::class, 'show']);
+
+
+
+
+
+
+// //Bon de commande dont les factures sont impayees, payes, en attente
+// Route::get('/bon-de-commandes/impayes', [BonDeCommandeController::class, 'RecupFactImpaye']);
+// //Bon de livraison avec les details des camions associe
+// Route::get('/bon-livraisons', [BonDeLivraisonController::class, 'index']);
+// //Bon de livraison avec les details d'un camion associe
+// Route::get('/bon-livraisons/show', [BonDeLivraisonController::class, 'show']);
+// //Montant total des factures payes
+// Route::get('/factures-payees/total', [FacturesController::class, 'TotalFactPaye']);
+// //Nombre de factures payer
+// Route::get('/factures-payees/nombrefactpaye', [FacturesController::class, 'NombreFactImpaye']);
+// //Récupérer les Stokeurs avec leurs dépôts associés
+// Route::get('/stokeurs', [StokeurDepotController::class, 'index']);
+// //Recuperer le depot d'un stokeur
+// Route::get('/stokeurs/{id}', [StokeurDepotController::class, 'show']);
