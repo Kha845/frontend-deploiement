@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
@@ -45,4 +46,18 @@
     "typescript-eslint": "^8.7.0",
     "vite": "^5.4.8"
   }
+=======
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.7.2",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "vite": "^4.0.0"
+    }
+>>>>>>> 6566b346fe12887a5b7e17902d9a7f73df2fd572
 }
