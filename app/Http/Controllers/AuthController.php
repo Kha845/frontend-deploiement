@@ -10,10 +10,9 @@ use Validator;
 
 class AuthController extends Controller
 {
-    // Méthode d'enregistrement
+    // Enregistrement d'un nouvel utilisateur
     public function register(Request $request)
     {
-        // Validation des données d'entrée
         $validator = Validator::make($request->all(), [
             'prenom' => 'required|string|max:255',
             'nom' => 'required|string|max:255',
@@ -26,69 +25,81 @@ class AuthController extends Controller
             'poste' => 'required|string|max:255',
         ]);
 
-        // Si la validation échoue
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
 
-        // Création de l'utilisateur
         $user = User::create([
             'prenom' => $request->prenom,
             'nom' => $request->nom,
             'adresseSGF' => $request->adresseSGF,
             'telephone' => $request->telephone,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => bcrypt($request->password),
             'matricule' => $request->matricule,
             'role_id' => $request->role_id,
             'poste' => $request->poste,
         ]);
 
-        // Génération du token JWT pour l'utilisateur
-        $token = auth()->login($user);
+        $token = Auth::login($user);
 
         return $this->respondWithToken($token);
     }
 
-    // Méthode de connexion
+    // Connexion d'un utilisateur
     public function login(Request $request)
     {
-        // Validation des données de connexion
         $credentials = $request->only('email', 'password');
 
-        if (! $token = auth()->attempt($credentials)) {
+        if (!$token = Auth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
     }
+    public function getRole()
+    {
+    // Récupère l'utilisateur authentifié
+        $user = Auth::user();
 
-    // Méthode de déconnexion
+        // Récupère son rôle
+        $role = $user->role;
+
+        if ($role) {
+            return response()->json([
+                'role' => $role->nom_role, 
+            ]);
+        } else {
+            return response()->json(['message' => 'No role assigned to this user'], 404);
+        }
+    }
+
+    // Profil utilisateur (route protégée)
+    public function profile()
+    {
+        return response()->json(Auth::user());
+    }
+
+    // Déconnexion (route protégée)
     public function logout()
     {
-        auth()->logout();
+        Auth::logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-    // Méthode pour obtenir l'utilisateur connecté
-    public function me()
-    {
-        return response()->json(auth()->user());
-    }
-
-    // Méthode pour rafraîchir le token
+    // Rafraîchir le token JWT (route protégée)
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(Auth::refresh());
     }
 
-    // Répondre avec un token
+    // Répondre avec le token JWT
     protected function respondWithToken($token)
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => Auth::factory()->getTTL() * 60
         ]);
     }
 }

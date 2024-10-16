@@ -8,7 +8,7 @@ use App\Http\Controllers\Api\BonDeCommandeController;
 use App\Http\Controllers\Api\BonDeLivraisonController;
 use App\Http\Controllers\Api\FacturesController;
 use App\Http\Controllers\Api\StokeurDepotController;
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +25,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'api'], function ($router) {
-    Route::post('register', [AuthController::class, 'register']);
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('refresh', [AuthController::class, 'refresh']);
-    Route::get('me', [AuthController::class, 'me']);
+
+Route::group(['prefix' => 'auth'], function () {
+    // Routes non protégées
+    Route::post('register', [AuthController::class, 'register']);  // Enregistrement
+    Route::post('login', [AuthController::class, 'login']);        // Connexion
+});
+// Routes protégées par le middleware JWT
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('profile', [AuthController::class, 'profile']);    // Profil utilisateur
+    Route::post('logout', [AuthController::class, 'logout']);     // Déconnexion
+    Route::post('refresh', [AuthController::class, 'refresh']);   // Rafraîchir le token
+    Route::get('user-role', [AuthController::class, 'getRole']);
 });
 
 
