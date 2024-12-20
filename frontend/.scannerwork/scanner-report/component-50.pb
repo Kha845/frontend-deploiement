@@ -1,0 +1,1 @@
+2 2tsXáhrFsrc/pages/private/tableau-de-bord/dot/detailsEntrantIndustrielMois.tsx

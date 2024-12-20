@@ -1,0 +1,1 @@
+P 2tsX–hr0src/pages/private/transaction/facture/detail.tsx

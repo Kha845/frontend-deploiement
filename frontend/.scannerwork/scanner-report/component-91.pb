@@ -1,0 +1,1 @@
+[ 2tsX\hr5src/pages/private/transaction/modeDePaiement/list.tsx

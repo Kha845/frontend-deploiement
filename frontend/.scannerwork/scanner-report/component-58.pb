@@ -1,0 +1,1 @@
+: 2tsXèhr<src/pages/private/tableau-de-bord/oryx/detailsSortieMois.tsx

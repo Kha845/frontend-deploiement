@@ -1,0 +1,1 @@
+) 2tsXRhr'src/pages/private/stock/depots/list.tsx

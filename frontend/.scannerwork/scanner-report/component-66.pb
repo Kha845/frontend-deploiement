@@ -1,0 +1,1 @@
+B 2tsXÚhr=src/pages/private/tableau-de-bord/recapilatif/recapilatif.tsx

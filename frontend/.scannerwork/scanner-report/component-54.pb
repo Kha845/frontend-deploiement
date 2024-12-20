@@ -1,0 +1,1 @@
+6 2tsXhr/src/pages/private/tableau-de-bord/dot/index.tsx

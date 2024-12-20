@@ -1,0 +1,1 @@
+G 2tsXhr4src/pages/private/tableau-de-bord/senStock/index.tsx

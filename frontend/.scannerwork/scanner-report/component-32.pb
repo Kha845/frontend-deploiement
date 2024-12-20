@@ -1,0 +1,1 @@
+  2tsXRhr9src/pages/private/reseau-approvisionnement/ipm/detail.tsx

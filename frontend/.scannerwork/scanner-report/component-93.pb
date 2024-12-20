@@ -1,0 +1,1 @@
+] 2tsX•hr9src/pages/private/transaction/receptionFacture/detail.tsx

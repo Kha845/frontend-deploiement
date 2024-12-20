@@ -1,0 +1,1 @@
+E 2tsXëhr?src/pages/private/tableau-de-bord/senStock/detailsEtatStock.tsx

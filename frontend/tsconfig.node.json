@@ -1,22 +1,30 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2023"],
-    "module": "ESNext",
+    "lib": ["ES2023","dom", "esnext"],
+    "types": ["vite/client", "vitest/globals","node"],
     "skipLibCheck": true,
-
-    /* Bundler mode */
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-
+    "baseUrl": "./",
+    // "paths": {
+    //   "@store/*": ["src/store/*"]
+    // },
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "src/**/*",  // Ajoutez le répertoire de vos fichiers sources
+    "src/tests/**/*",  // Ajoutez le répertoire contenant vos tests
+    "vite.config.ts",
+  ]
 }

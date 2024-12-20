@@ -1,0 +1,1 @@
+* 2tsXXhr1src/pages/private/stock/stockeurs/createDepot.tsx

@@ -1,0 +1,1 @@
+4 2tsXéhr;src/pages/private/tableau-de-bord/dot/detailsSortieMois.tsx

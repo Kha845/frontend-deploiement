@@ -1,0 +1,1 @@
+- 2tsXµhr2src/pages/private/stock/stockeurs/editStockeur.tsx
