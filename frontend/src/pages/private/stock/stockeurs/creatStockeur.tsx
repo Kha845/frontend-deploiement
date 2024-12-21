@@ -34,7 +34,7 @@ const StockeurCreate = ({ onNext}: { onNext: (data: StockeurData) => void }) => 
   };
 
   return (
-    <Card sx={{marginLeft: '400px'}}>
+    <Card>
       <CardContent>
         <Typography variant="h4" gutterBottom color='success' textAlign='center'>
           Création de stockeur

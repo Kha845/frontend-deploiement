@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Card, CardContent, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import {Dialog, DialogActions, DialogContent, DialogTitle, Button, Card, CardContent, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { observer } from 'mobx-react-lite';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useStore } from '../../../../store/rootStore';
-import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import {  } from '@mui/material';
 import { useEffect, useState } from 'react';
 // Définir la validation du formulaire
 const validationSchema = Yup.object().shape({
@@ -53,7 +53,6 @@ const FactureSave = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const [formData, setFormData] = useState<any>(null);
     const [bonDeLivraisons, setBonDeLivraison] = useState<BonDeLivraison[]>([]);
-    const [bonDeCommandes, setBonDeCommande] = useState<BonDeCommande[]>([]);
     const [modeDePaiements, setModeDePaiements] = useState<ModeDePaiement[]>([]);
     const [depots, setDepots] = useState<Depot[]>([]);
     const { handleSubmit, control, formState: { errors }, reset, setValue, getValues } = useForm({
@@ -86,16 +85,6 @@ const FactureSave = () => {
             console.error('Erreur lors de la récupération des bons de livraison:', error);
         }
     };
-
-    // Fonction pour récupérer la liste des bons de commandes
-    const fetchBonDeCommande = async () => {
-        try {
-            const response = await factureStore.getListBonDeCommande();
-            setBonDeCommande(response); // Assurez-vous d'adapter cette ligne selon la structure de votre réponse
-        } catch (error) {
-            console.error('Erreur lors de la récupération bons de commande:', error);
-        }
-    };
     // Fonction pour récupérer la liste des modes de paiement
     const fetchModeDePaiement = async () => {
         try {
@@ -116,7 +105,6 @@ const FactureSave = () => {
         };
     useEffect(() => {
         fetchBonDeLivraison();
-        fetchBonDeCommande();
         fetchModeDePaiement();
         fetchDepots();
     }, []);
@@ -366,30 +354,6 @@ const FactureSave = () => {
                                             shrink: true, // Pour faire en sorte que le label ne chevauche pas le champ
                                         }}
                                     />
-                                )}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} sm={4}>
-                            <Controller
-                                name="idBonCommande"
-                                control={control}
-                                render={({ field }) => (
-                                    <FormControl variant="filled" fullWidth margin="normal" error={!!errors.idBonCommande}>
-                                        <InputLabel id="bonCommande-select-label">Sélectionnez numero BC</InputLabel>
-                                        <Select
-                                            {...field}
-                                            labelId="bonCommande-select-label"
-                                            fullWidth
-                                        >
-                                            {bonDeCommandes.map((bonCommande: any) => (
-                                                <MenuItem key={bonCommande.id} value={bonCommande.id}>
-                                                    {bonCommande.numeroBonDeCommande} {/* Remplacez par l'attribut que vous souhaitez afficher */}
-                                                </MenuItem>
-                                            ))}
-                                        </Select>
-                                        {errors.idBonCommande && <p style={{ color: 'red' }}>{errors.idBonCommande.message}</p>}
-                                    </FormControl>
                                 )}
                             />
                         </Grid>

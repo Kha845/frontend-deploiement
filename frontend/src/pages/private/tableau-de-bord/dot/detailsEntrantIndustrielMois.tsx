@@ -209,7 +209,6 @@ const DetailsEntrantIndustrielMoisDOT = () => {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '5px',
         marginTop: '0px',
       }}
     >
@@ -280,7 +279,7 @@ const DetailsEntrantIndustrielMoisDOT = () => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1400px',
-          marginLeft: '130px',
+         
         }}
       >
         <TableContainer component={Paper}>

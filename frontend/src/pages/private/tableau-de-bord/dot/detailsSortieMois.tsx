@@ -285,7 +285,6 @@ const DetailsSortieMoisDOT = () => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1400px',
-          marginLeft: '130px',
         }}
       >
         <TableContainer component={Paper}>

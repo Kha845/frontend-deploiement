@@ -275,7 +275,7 @@ const EditFacture = () => {
     }, [ designations.map(item => item.montant_noir), 
         designations.map(item => item.montant_blanc)]);
     return (
-        <Card sx={{ marginLeft: '160px' }}>
+        <Card>
             <CardContent>
                 <Typography variant="h4" gutterBottom color='success' textAlign='center'>
                     Edition de facture

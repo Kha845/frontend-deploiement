@@ -34,7 +34,7 @@ const FournisseurList = () => {
   }, []);
   if (!data) {
     console.log('data:',data);
-    return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+    return <Box textAlign='center' mt={5}><CircularProgress /></Box>;
   }
   // Filtrer les données en fonction de la valeur de recherche
   const filteredRows: FournisseurRow[] = (fournisseurStore.rowData as unknown as FournisseurRow[]).filter((row) => {
@@ -42,7 +42,7 @@ const FournisseurList = () => {
     return row.nom.toLowerCase().includes(searchValue.toLowerCase())
   });
   return (
-    <Box sx={{marginLeft: '210px'}}>
+    <Box>
       <Box>
       <Typography variant='h4' className='text-center' color='success'>
           La liste des fournisseurs

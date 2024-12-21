@@ -14,16 +14,16 @@ export default class utilisateurStore {
     rowData: GridRowsProp[] = [];
 
     columns: GridColDef[] = [
-        { field: 'prenom', headerName: 'Prenom', width: 150 },
-        { field: 'nom', headerName: 'Nom', width: 150 },
-        { field: 'telephone', headerName: 'Telephone', width: 150, },
+        { field: 'prenom', headerName: 'Prenom', width: 100 },
+        { field: 'nom', headerName: 'Nom', width: 100 },
+        { field: 'telephone', headerName: 'Telephone', width: 100, },
         { field: 'email', headerName: 'Email', width: 300, },
-        { field: 'adresseSGF', headerName: 'Adresse', width: 200, },
-        { field: 'poste', headerName: 'Poste', width: 250, },
-        { field: 'matricule', headerName: 'Matricule', width: 150, },
+        { field: 'adresseSGF', headerName: 'Adresse', width: 150, },
+        { field: 'poste', headerName: 'Poste', width: 100, },
+        { field: 'matricule', headerName: 'Matricule', width: 100, },
         {
             field: 'etat', headerName: 'Etat',
-            width: 70, renderCell: (params) => {
+            width: 50, renderCell: (params) => {
                 return params.row.etat === 1 ? (
                     <CheckCircle color="success" />
                 ) : (

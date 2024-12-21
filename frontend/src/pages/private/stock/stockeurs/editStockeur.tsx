@@ -73,7 +73,7 @@ const handleCancel = () => {
   setOpenDialog(false); // Fermer la boîte de dialogue
 };
   return (
-    <Box sx={{ mb: 2, p: 2, border: '1px solid #ccc', marginLeft: '350px' }}>
+    <Box sx={{ mb: 2, p: 2, border: '1px solid #ccc'}}>
       <Typography variant="h4" color='success' textAlign='center'>Mise à jour du stockeur</Typography>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {/* Formulaire de mise à jour du camion */}

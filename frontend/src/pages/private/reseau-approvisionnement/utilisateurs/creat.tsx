@@ -125,7 +125,7 @@ const UtilisateursCreate = () => {
     setOpenDialog(false); // Fermer la boîte de dialogue
   };
   return (
-    <Card sx={{marginLeft: '150px'}}>
+    <Card>
       <CardContent>
         <Typography variant="h4" gutterBottom color='success' textAlign='center'>
           Creation Utilisateur

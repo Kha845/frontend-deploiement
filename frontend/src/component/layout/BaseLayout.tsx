@@ -28,7 +28,7 @@ const BaseLayout: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState<{prenom:string, nom:string,roles: string[]} | null>(null);
   const container = window !== undefined ? () => window().document.body : undefined;
-  const { rootStore: { authStore , dialogStore,alertStore,factureStore} } = useStore();
+  const { rootStore: { authStore , dialogStore,alertStore} } = useStore();
   
   // Fonction pour gérer le clic sur un onglet
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>, newIndex: number) => {
@@ -66,7 +66,7 @@ const logout = async () =>{
           try {
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const resData = await authStore.logout();
-              
+              console.log('Les donnees de deconnexion',resData);
           } catch (error) {
               console.log(error)
           }
@@ -148,7 +148,7 @@ const logout = async () =>{
   };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>LAGANE</Typography>
+      <Typography variant="h6" sx={{ my: 2 }}>KHABANE</Typography>
       <Divider />
       <List>
         {filteredTabs.map((item) => (
@@ -194,7 +194,7 @@ const logout = async () =>{
             }}
           />
           <Tabs
-            value={currentTabIndex !== null ? currentTabIndex : false} // Évite la sélection d'un index erroné
+            value={currentTabIndex ?? false} // Évite la sélection d'un index erroné
             sx={{ flexGrow: 1, '& .MuiTab-root': { color: 'white' }, marginLeft: 2 }}
           >
             {filteredTabs.map((tab, index) => (
@@ -258,7 +258,7 @@ const logout = async () =>{
         }}
       >
         {currentTabIndex !== null && (
-          <Grid container sx={{ padding: '2px', display: 'flex', justifyContent: 'center' }}>
+          <Grid container sx={{ padding: '0px', display: 'flex', justifyContent: 'center', alignItems:'left' }}>
             {filteredSubMenus()?.map((subMenu: any, index: any) => (
               <Grid
                 item
@@ -282,7 +282,12 @@ const logout = async () =>{
                   
                   }}
                 >
-                  <Button sx={filteredTabs[currentTabIndex]?.label === 'Stock' ? { marginLeft: 50, color: 'green' } : { marginLeft: 22, color: 'green' }}>
+                  <Button 
+                  sx={
+                    filteredTabs[currentTabIndex]?.label === 'Stock'
+                      ? { marginLeft: 30, color: 'green', fontSize: '0.1rem' } // Réduction de la taille
+                      : { marginLeft: 10, color: 'green', fontSize: '0.1rem' }
+                  }>
                     {subMenu.icon}
                   </Button>
                   <Typography sx={{ color: 'green' }}>{subMenu.label}</Typography>

@@ -89,7 +89,7 @@ const EditFournisseur = () => {
     }, [id]);
 
     return (
-        <Card  sx={{marginLeft: '150px'}}>
+        <Card>
             <CardContent>
                 <Typography variant="h4" gutterBottom color='success' textAlign='center'>
                     Edition Fournisseur

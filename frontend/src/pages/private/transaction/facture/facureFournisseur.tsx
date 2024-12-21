@@ -1,18 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Card, CardContent, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle,Button, Card, CardContent, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { observer } from 'mobx-react-lite';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useStore } from '../../../../store/rootStore';
-import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { select } from 'framer-motion/client';
-// Définir la validation du formulaire
 const validationSchema = Yup.object().shape({
     reference: Yup.string().nullable(),
     emetteur: Yup.string().required('Emetteur est requis'),

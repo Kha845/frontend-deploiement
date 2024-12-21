@@ -88,7 +88,7 @@ const EditModeDePaiement = () => {
     }, [id]);
 
     return (
-        <Card sx={{marginLeft: '550px'}}>
+        <Card>
             <CardContent>
                 <Typography variant="h4" gutterBottom color='success'>
                     Edition de bon de commande

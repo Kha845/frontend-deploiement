@@ -37,10 +37,10 @@ const DetailIpm = () => {
 
     // Vérifier si les données sont disponibles avant de les afficher
     if (!data) {
-        return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+        return <Box textAlign='center' mt={5}><CircularProgress /></Box>;
       }
     return (
-        <Card sx={{ marginLeft: '150px', marginTop: 2, width: '130%' }}>
+        <Card sx={{marginTop: 2, width: '100%' }}>
                 <Box display='flex' justifyContent='start-end' alignItems='right'>
                 <Button sx={{ mt: 2, ml: 2, background: 'gold', lg: '3' }} variant="contained" onClick={() => { navigate(-1); }}>
                             Retour

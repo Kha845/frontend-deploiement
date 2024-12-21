@@ -10,27 +10,17 @@ import { ArrowBack } from '@mui/icons-material';
 interface Designation {
   designation: string;
   quantite: number;
-//   prixUnitaire: number;
-//   montant: number;
-//   devise: string;
 }
 
 interface FactureData {
-//   [x: string]: any;
-//   emetteur: string;
-//   destinataire: string | null;
   reference: string | null;
   date: string;
 //   format: string;
   designations: Designation[];
-//   montantHT: number;
-//   montantTVA: number;
-//   montantTTC: number;
 }
 
 const FacturePartiellementPayee = () => {
     const { rootStore: { recapilatifStore} } = useStore();
-//   const [dataFacturePayee, setdataFacturePayee] = useState<FactureData | null>(null);
   const [dataFacturePayeePartiellement, setdataFacturePayeePartiellement] = useState<FactureData[]>([]);
   const [filteredFactures, setFilteredFactures] = useState<FactureData[]>([]);
   const [startDate, setStartDate] = useState<string>('');
@@ -85,7 +75,7 @@ const FacturePartiellementPayee = () => {
     }
 
     return (
-    <Card sx={{ marginLeft: '98px', marginTop: 2, width: '160%' }}>
+    <Card sx={{ marginTop: 2, width: '100%' }}>
          <Box display="flex" justifyContent='left' alignItems="center" width='100%'>
             <IconButton sx={{ mt: 2, ml: 2, background: 'green' }} onClick={() => { navigate(-1); }}>
                 <ArrowBack sx={{color: 'white' }}/>

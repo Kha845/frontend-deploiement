@@ -4,10 +4,8 @@ import axios from 'axios';
 import { Container, Typography, TextField, Button, MenuItem, Select, InputLabel, FormControl, Grid, Box, Toolbar, Paper, Autocomplete, CircularProgress } from '@mui/material';
 import { DataGrid, GridColDef, GridCellParams } from '@mui/x-data-grid';
 import { useStore } from '../../../../store/rootStore';
-import { green } from '@mui/material/colors';
 import { Alert, Snackbar, Dialog, DialogTitle, DialogContent, DialogActions, Typography as MuiTypography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import { Height } from '@mui/icons-material';
 interface User {
   idUser: number;
   prenom: string;
@@ -117,8 +115,8 @@ const Configuration: React.FC = () => {
     fetchRoles();
   }, []);
   if (!dataRole) {
-    // console.log('data:',data);
-    return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+   
+    return <Box textAlign='center' mt={5}><CircularProgress /></Box>;
   }
   // Création d'un nouveau rôle
   const handleCreateRole = async () => {
@@ -146,7 +144,7 @@ const Configuration: React.FC = () => {
       console.log('Réponse de l\'API:', response.data);
   
       const newRole = response.data.role; // Adaptez si nécessaire
-      if (newRole && newRole.id) {
+      if (newRole?.id) {
         // Rafraîchir la liste des rôles après la création
         setRoles((prevRoles) => [...prevRoles, newRole]);
         const updatedRolesResponse = await axios.get(`${import.meta.env.VITE_API_URL}/v1/roles/list`, {
@@ -282,7 +280,7 @@ const Configuration: React.FC = () => {
       });
 
       // Vérifiez que les données récupérées sont valides
-      if (updatedUsersResponse.data && updatedUsersResponse.data.users) {
+      if (updatedUsersResponse?.data.users) {
         setUsers(updatedUsersResponse.data.users);
       } else {
         console.error('Aucune donnée d\'utilisateur valide retournée.');
@@ -346,8 +344,7 @@ const Configuration: React.FC = () => {
       headerName: 'Utilisateur',
       width: 200,
       renderCell: (params: GridCellParams) => {
-        // console.log('params dans renderCell:', params); // Ajoute ceci pour voir les paramètres
-        if (!params || !params.row) {
+        if (!params?.row) {
           return 'Inconnu';
         }
         const prenom = params.row.prenom || '';
@@ -358,7 +355,7 @@ const Configuration: React.FC = () => {
     {
       field: 'roles',
       headerName: 'Rôle',
-      width: 500,
+      width: 200,
       renderCell: (params) => {
         // params.row.roles devrait contenir un tableau de rôles
         const userRoles = params.row.roles; // Assurez-vous que les rôles sont dans chaque ligne
@@ -371,7 +368,7 @@ const Configuration: React.FC = () => {
     {
       field: 'action',
       headerName: 'Action',
-      width: 500,
+      width: 200,
       renderCell: (params: GridCellParams) => {
         const hasRole = params.row.roles.length > 0;
         return (
@@ -391,7 +388,7 @@ const Configuration: React.FC = () => {
     }
   ];
   return (
-    <Container sx={{marginLeft:'270px'}}>
+    <Container>
       {/* Affichage des alertes */}
       <Snackbar
         open={openAlert}
@@ -441,7 +438,7 @@ const Configuration: React.FC = () => {
             flexGrow={1}
             display="flex"
             flexDirection="column"
-            style={{ width: '30%', height: '500px' }}
+            style={{ width: '50%', height: '500px' }}
             
           >
             <Typography variant="h4" gutterBottom color='success' textAlign='center'>Créer un rôle</Typography>
@@ -503,7 +500,7 @@ const Configuration: React.FC = () => {
         {/* Bloc DataGrid pour afficher les utilisateurs et leurs rôles */}
         <Box>
           <Typography variant="h4" gutterBottom color='success' textAlign='center'>La liste des utilisateurs et leurs rôles</Typography>
-          <div style={{ height: 400, width: '100%' }}>
+          <div>
             {users.length > 0 ? (
               <DataGrid
                 rows={users}
@@ -572,7 +569,6 @@ const Configuration: React.FC = () => {
               onClick={handleCloseDialog}
               color="success"
               variant="contained"
-              sx={{ marginLeft: 10 }}
             >
               Annuler
             </Button>

@@ -31,7 +31,7 @@ const BonDeLivraisonList = () => {
   }, []);
   if (!data) {
     console.log('data:',data);
-    return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+    return <Box textAlign='center' mt={5} ><CircularProgress /></Box>;
   }
   // Filtrer les données en fonction de la valeur de recherche
   const filteredRows: BonDeLivraisonRow[] = (bonDeLivraisonStore.rowData as unknown as BonDeLivraisonRow[]).filter((row) => {

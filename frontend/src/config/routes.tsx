@@ -14,22 +14,6 @@ import FournisseurList from '../pages/private/reseau-approvisionnement/fournisse
 import EditFournisseur from '../pages/private/reseau-approvisionnement/fournisseurs/edit';
 import FournisseurCreate from '../pages/private/reseau-approvisionnement/fournisseurs/creat';
 import EditConfig from '../pages/private/reseau-approvisionnement/configuration/edit';
-// import Clients from '../pages/private/clients/autre';
-// import ClientList from '../pages/private/clients/autre/list';
-// import ClientCreate from '../pages/private/clients/autre/creat';
-// import EditClient from '../pages/private/clients/autre/edit';
-// import StationService from '../pages/private/clients/station-service';
-// import  StationServiceList   from '../pages/private/clients/station-service/list';
-// import  StationServiceCreate    from '../pages/private/clients/station-service/creat';
-// import  EditStationService    from '../pages/private/clients/station-service/edit';
-// import Boulangerie from '../pages/private/clients/boulangerie';
-// import BoulangerieList from '../pages/private/clients/boulangerie/list';
-// import BoulangerieCreate from '../pages/private/clients/boulangerie/creat';
-// import EditBoulangerie from '../pages/private/clients/boulangerie/edit';
-// import GarageAutomobile from '../pages/private/clients/garage-automobile';
-// import GarageAutomobileList from '../pages/private/clients/garage-automobile/list';
-// import GarageAutomobileCreate from '../pages/private/clients/garage-automobile/creat';
-// import EditGarageAutomobile from '../pages/private/clients/garage-automobile/edit';
 import StockeurEtDepot from '../pages/private/stock/stockeurs/stockeurEtDepot';
 import Stockeurs from '../pages/private/stock/stockeurs';
 import StockeurList from '../pages/private/stock/stockeurs/list';
@@ -37,8 +21,6 @@ import Depots from '../pages/private/stock/depots';
 import DepotList from '../pages/private/stock/depots/list';
 import ReceptionFacture from '../pages/private/transaction/receptionFacture';
 import ReceptionFactureList from '../pages/private/transaction/receptionFacture/list';
-import BonDeCommandeCreate from '../pages/private/transaction/receptionFacture/creat';
-// import EditBonDeCommande from '../pages/private/transaction/receptionFacture/edit';
 import BonDeLivraison from '../pages/private/transaction/bonDeLivraison';
 import BonDeLivraisonList from '../pages/private/transaction/bonDeLivraison/list';
 import BonDeLivraisonCreate from '../pages/private/transaction/bonDeLivraison/creat';
@@ -147,8 +129,6 @@ const routes = [
             ]},
             {path: "transaction/reception-facture", element: <PrivateRoute element= {<ReceptionFacture/>}/>, children: [
                 {path: "", element: <ReceptionFactureList/>},
-                {path: "create", element: <BonDeCommandeCreate/>},
-                // {path: "edit/:id", element: <EditBonDeCommande/>},
                 {path: "detail/:id", element: <DetailFacture/>},
             ]},
             {path: "transaction/bon-livraison", element: <PrivateRoute element= {<BonDeLivraison/>}/>, children: [

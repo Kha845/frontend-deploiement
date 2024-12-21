@@ -213,7 +213,6 @@ const DetailsSortieMoisORYX = () => {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '50px',
         marginTop: '0px',
       }}
     >
@@ -222,7 +221,7 @@ const DetailsSortieMoisORYX = () => {
           <ArrowBack sx={{ color: 'white' }} />
         </IconButton>
       </Box>
-      <Typography variant="h4" textAlign="center" gutterBottom color="success" marginLeft='9%'>
+      <Typography variant="h4" textAlign="center" gutterBottom color="success">
         TABLEAU DES SORTIES DE CARBURANTS  D'ORYX POUR LE MOIS {month}
       </Typography>
       <Box
@@ -284,7 +283,7 @@ const DetailsSortieMoisORYX = () => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1400px',
-          marginLeft: '130px',
+          
         }}
       >
         <TableContainer component={Paper}>

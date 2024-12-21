@@ -45,7 +45,7 @@ const ReceptionFactureList = () => {
 
   if (!data) {
     console.log('data:', data);
-    return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+    return <Box textAlign='center' mt={5}><CircularProgress /></Box>;
   }
   // Filtrer les données en fonction de la valeur de recherche
   const filteredRows: FactureRow[] = (factureStore.rowData as unknown as FactureRow[]).filter((row) => {
@@ -60,7 +60,7 @@ const ReceptionFactureList = () => {
           La liste des factures envoyées par l'agent comptable
         </Typography>
       </Box>
-      <Paper sx={{ height: 450, width: '112%', }}>
+      <Paper sx={{ height: 400, width: '100%', }}>
         <DataGrid
           rows={filteredRows.sort((a, b) => b.id - a.id)}
           columns={factureStore.columns}

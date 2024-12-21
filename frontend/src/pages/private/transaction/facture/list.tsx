@@ -44,7 +44,7 @@ const FactureList = () => {
   }, []);
   if (!data) {
     console.log('data:',data);
-    return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+    return <Box textAlign='center' mt={5} ><CircularProgress /></Box>;
   }
   // Filtrer les données en fonction de la valeur de recherche
   const filteredRows: FactureRow[] = (factureStore.rowData as unknown as FactureRow[]).filter((row) => {
@@ -52,7 +52,7 @@ const FactureList = () => {
     return row.reference.toLowerCase().includes(searchValue.toLowerCase())       
   });
   return (
-    <Box sx={{paddingRight: '0px', marginLeft:'90px'}}>
+    <Box sx={{paddingRight: '0px'}}>
         <Box display="flex" justifyContent="center" marginBottom={2} alignItems="center">
             <Typography variant='h4' className='text-center' color='success'>
             La liste des factures rejetées par le chef comptable
@@ -113,7 +113,7 @@ const FactureList = () => {
             />
           </Box>
         </Box>
-        <Paper sx={{ height: 450, width: '110%',}}>
+        <Paper sx={{ height: 450, width: '100%',}}>
           <DataGrid
             rows={filteredRows.sort((a, b) => b.id - a.id)}
             columns={factureStore.columnsEnvoieFacture}

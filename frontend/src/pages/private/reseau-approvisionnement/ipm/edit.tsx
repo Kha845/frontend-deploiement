@@ -89,7 +89,7 @@ const EditIpm = () => {
         setValue('total_cotisations', cotisationTotal, { shouldValidate: true });
     }, [cotisationAdherant, cotisationEmployeur, setValue]);
     return (
-        <Card sx={{ marginLeft: '400px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Card sx={{display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <CardContent>
                 <Typography variant="h4" gutterBottom color='success' textAlign='center'>
                     Edition IPM

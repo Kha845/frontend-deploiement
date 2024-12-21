@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const TableauBordSenStock = () => {
     return (
         <Box component="main" style={{ marginTop: '0px', width:'100%'}}> {/* Ajuster les marges et padding ici */}
-        <Toolbar sx={{ minHeight: '40px' }} /> {/* Diminuez la hauteur du Toolbar si nécessaire */}
+        <Toolbar sx={{ minHeight: '10px' }} /> {/* Diminuez la hauteur du Toolbar si nécessaire */}
         <Outlet />
         </Box>
     );

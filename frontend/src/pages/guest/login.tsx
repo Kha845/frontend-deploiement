@@ -11,74 +11,69 @@ import LockIcon from '@mui/icons-material/Lock';
 import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 
-// Schéma de validation des données avec Yup
 const schema = yup.object().shape({
     email: yup.string().required('L\'email est requis').email('L\'email n\'est pas valide'),
     password: yup.string().required('Le mot de passe est requis'),
 });
 
 const Login = () => {
-    const { rootStore: { authStore} } = useStore();
-    const [errorMessage, setErrorMessage] = useState(''); 
+    const { rootStore: { authStore } } = useStore();
+    const [errorMessage, setErrorMessage] = useState('');
     
-    const { handleSubmit, control, formState: { errors, isSubmitting }, reset, } = useForm({ resolver: yupResolver(schema), defaultValues: { email: "", password: ""}});
+    const { handleSubmit, control, formState: { errors, isSubmitting }, reset } = useForm({ 
+        resolver: yupResolver(schema), 
+        defaultValues: { email: "", password: "" } 
+    });
 
     const isAuthenticated = authStore.isAuthenticated;
-    // Soumission du formulaire
+
     const onSubmit = async (data: any) => {
-        console.log("Form data:", data);
         try {
-            const resData = await authStore.login({
-                email: data.email,
-                password: data.password,
-            });
-            console.log('Connexion réussie:', resData);
+            const resData = await authStore.login({ email: data.email, password: data.password });
+            console.log('Les donnees de connexion', resData);
             reset();
             setErrorMessage('');
-        } catch (error:any) {
-            console.log("Erreur de connexion:", error);
-            setErrorMessage('Verifiez vous identifiants');
-            
+        } catch (error: any) {
+            setErrorMessage('Vérifiez vos identifiants');
         }
     };
 
     if (isAuthenticated) {
-        // Redirection si l'utilisateur est authentifié
         return <Navigate to="/accueil" replace />;
     }
 
     return (
-        <Box className="min-h-screen w-full flex flex-col items-center justify-center" 
-         >
-            <Card className="p-4 border rounded-lg shadow" sx={{marginLeft: '120%'}}>
+        <Box
+            className="min-h-screen w-full flex flex-col items-center justify-center"
+            sx={{padding: 2 }}
+        >
+            <Card className="p-4 border rounded-lg shadow" sx={{ width: '100%', maxWidth: '400px', margin: '0 auto' }}>
                 <CardContent>
-                <Box className="text-center mb-4 text-white bg-gradient-to-r from-green-800 to-yellow-300 w-[690px]">
-                <Typography variant="h4">LAGANE</Typography>
-                </Box>
+                    <Box className="text-center mb-4 bg-gradient-to-r from-green-800 to-yellow-300 p-2 rounded">
+                        <Typography variant="h4" color="white">LAGANE</Typography>
+                    </Box>
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                        <h1 className="text-lg font-bold mb-2 text-green-800 text-center">Connexion</h1>
+                        <Typography variant="h6" className="text-green-800 text-center mb-4">Connexion</Typography>
                         {errorMessage && (
-                            <Typography color="error" variant="body2" className="text-red-600" textAlign='center'>
+                            <Typography color="error" variant="body2" textAlign="center">
                                 {errorMessage}
                             </Typography>
                         )}
-                        {/* Champ Email */}
                         <Controller
                             name="email"
                             control={control}
                             render={({ field }) => (
                                 <TextField
                                     fullWidth
-                                    id="email"
                                     label="Email"
                                     type="email"
                                     variant="filled"
                                     error={!!errors.email}
-                                    helperText={errors.email ? errors.email.message : ''}
+                                    helperText={errors.email?.message}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
-                                                <EmailIcon className='text-green-800' />
+                                                <EmailIcon className="text-green-800" />
                                             </InputAdornment>
                                         ),
                                     }}
@@ -86,23 +81,21 @@ const Login = () => {
                                 />
                             )}
                         />
-                        {/* Champ Mot de passe */}
                         <Controller
                             name="password"
                             control={control}
                             render={({ field }) => (
                                 <TextField
                                     fullWidth
-                                    id="password"
                                     label="Mot de passe"
                                     type="password"
                                     variant="filled"
                                     error={!!errors.password}
-                                    helperText={errors.password ? errors.password.message : ''}
+                                    helperText={errors.password?.message}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
-                                                <LockIcon className='text-green-800' />
+                                                <LockIcon className="text-green-800" />
                                             </InputAdornment>
                                         ),
                                     }}
@@ -110,25 +103,20 @@ const Login = () => {
                                 />
                             )}
                         />
-
-                        {/* Bouton de connexion */}
-                        <Box sx={{display: 'center', justifyContent:'center'}}>
                         <Button
-                            variant='contained'
-                            color='success'
-                            className="px-4 py-2 text-white rounded"
+                            variant="contained"
+                            color="success"
+                            fullWidth
                             type="submit"
-                            disabled={isSubmitting} 
+                            disabled={isSubmitting}
                         >
                             {isSubmitting ? "Vérification..." : "Connecter"}
                         </Button>
-                        </Box>
                     </form>
                 </CardContent>
             </Card>
         </Box>
     );
-}
+};
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default observer(Login);

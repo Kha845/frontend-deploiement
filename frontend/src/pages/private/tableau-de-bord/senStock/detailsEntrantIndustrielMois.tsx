@@ -209,7 +209,6 @@ const DetailsEntrantIndustrielMois = () => {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '5px',
         marginTop: '0px',
       }}
     >
@@ -218,7 +217,7 @@ const DetailsEntrantIndustrielMois = () => {
           <ArrowBack sx={{ color: 'white' }} />
         </IconButton>
       </Box>
-      <Typography variant="h4" textAlign="center" gutterBottom color="success" marginLeft='12%'>
+      <Typography variant="h4" textAlign="center" gutterBottom color="success">
         TABLEAU DES ENTREES DE CARBURANTS EN FORMAT INDUSTRIEL DE SENSTOCK POUR LE MOIS {month}
       </Typography>
       <Box
@@ -280,7 +279,6 @@ const DetailsEntrantIndustrielMois = () => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1400px',
-          marginLeft: '130px',
         }}
       >
         <TableContainer component={Paper}>

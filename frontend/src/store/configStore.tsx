@@ -57,7 +57,7 @@ export default class ConfigStore {
         try {
             if (!this.rootStore.authStore.token) {
                 this.rootStore.handleError(401, "Token manquant", {});
-                return Promise.reject("Token manquant");
+                return Promise.reject(new Error("Token manquant"));
             }
     
             const response = await axios.get(this.BASE_URL + '/list', {
@@ -89,7 +89,7 @@ export default class ConfigStore {
         try {
             if (!this.rootStore.authStore.token) {
                 this.rootStore.handleError(401, "Token manquant", {});
-                return Promise.reject("Token manquant");
+                return Promise.reject(new Error("Token manquant"));
             }
     
             const response = await axios.get(this.BASE_URL1 + '/list', {
@@ -137,7 +137,7 @@ export default class ConfigStore {
             
             if (data.error) {
                 this.rootStore.handleError(response.status, data.message, data);
-                return Promise.reject(data);
+                return Promise.reject(new Error(data.message));
             }else{
                 //this.rootStore.alertStore.open( {status: 'success',   message: data.message } )
                    // Afficher une notification de succès
@@ -162,7 +162,7 @@ export default class ConfigStore {
                 // Gérer les erreurs spécifiques retournées par le serveur
                 const serverMessage = error.response.data.message || 'Une erreur est survenue lors de la requête.';
                 this.rootStore.handleError(error.response.status, serverMessage, error.response.data);
-                return Promise.reject(serverMessage);
+                return Promise.reject(new Error(serverMessage));
             } else if (error.request) {
                 // Lorsque la requête est envoyée mais qu'aucune réponse n'est reçue
                 console.error("Erreur Axios Request:", error.request);

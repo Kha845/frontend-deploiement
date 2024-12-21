@@ -37,7 +37,7 @@ const DepotList = () => {
   });
 
   return (
-    <Card sx={{marginLeft: '300px'}}>
+    <Card>
       <CardContent>
         <Typography variant='h4' className='text-center' color='success'>
           La liste des depots

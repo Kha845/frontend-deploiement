@@ -215,7 +215,6 @@ useEffect(() => {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '10px',
         marginTop: '0px',
       }}
     >
@@ -225,7 +224,7 @@ useEffect(() => {
             </IconButton>
         </Box>
 
-      <Typography variant="h4" textAlign="center" gutterBottom color="success" marginLeft='11.5%'>
+      <Typography variant="h4" textAlign="center" gutterBottom color="success">
       TABLEAU DES ENTREES DE CARBURANTS EN FORMAT COMMERCIAL DE SENSTOCK POUR LE MOIS {month}
       </Typography>
       <Box
@@ -253,7 +252,13 @@ useEffect(() => {
           value={endDate || ''}
           onChange={(e) => setEndDate(e.target.value)}
         />
-        <Button variant="contained" color="success" onClick={handleFilterByDate}>
+        <Button variant="contained" color="success" 
+        onClick={handleFilterByDate} sx={{
+          width: '230px', marginRight: 1, '& .MuiOutlinedInput-root': {
+            height: '35px',  // Ajustez la hauteur totale ici
+            fontSize: '0.875rem', // Optionnel : ajuster la taille du texte pour correspondre
+          },
+        }}>
           Rechercher
         </Button>
         <TextField 
@@ -285,11 +290,10 @@ useEffect(() => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1400px',
-          marginLeft: '130px',
         }}
       >
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 800 }} aria-label="simple table">
+        <TableContainer component={Paper} >
+          <Table sx={{ minWidth: 800}} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>Dates</TableCell>

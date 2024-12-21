@@ -34,7 +34,7 @@ const ModeDePaiementList = () => {
 
   if (!data) {
     console.log('data:',data);
-    return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+    return <Box textAlign='center' mt={5} ><CircularProgress /></Box>;
   }
   // Filtrer les données en fonction de la valeur de recherche
   const filteredRows: ModeDePaiementRow[] = (modeDePaiementStore.rowData as unknown as ModeDePaiementRow[]).filter((row) => {
@@ -43,7 +43,7 @@ const ModeDePaiementList = () => {
           
   });
   return (
-    <Box sx={{marginLeft: '400px'}}>
+    <Box >
         <Box display="flex" justifyContent="center" marginBottom={2} alignItems="center">
             <Typography variant='h4' className='text-center' color='success'>
             La liste des mode de paiements

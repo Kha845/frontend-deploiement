@@ -214,7 +214,6 @@ const DetailsSortieMois = () => {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '50px',
         marginTop: '0px',
       }}
     >
@@ -243,6 +242,12 @@ const DetailsSortieMois = () => {
           InputLabelProps={{ shrink: true }}
           value={startDate || ''}
           onChange={(e) => setStartDate(e.target.value)}
+          sx={{
+            width: '230px', marginRight: 1, '& .MuiOutlinedInput-root': {
+              height: '35px',  // Ajustez la hauteur totale ici
+              fontSize: '0.8rem', // Optionnel : ajuster la taille du texte pour correspondre
+            },
+          }}
         />
         <TextField
           label="Date de fin"
@@ -250,8 +255,20 @@ const DetailsSortieMois = () => {
           InputLabelProps={{ shrink: true }}
           value={endDate || ''}
           onChange={(e) => setEndDate(e.target.value)}
+          sx={{
+            width: '230px', marginRight: 1, '& .MuiOutlinedInput-root': {
+              height: '35px',  // Ajustez la hauteur totale ici
+              fontSize: '0.8rem', // Optionnel : ajuster la taille du texte pour correspondre
+            },
+          }}
         />
-        <Button variant="contained" color="success" onClick={handleFilterByDate}>
+        <Button variant="contained" color="success" onClick={handleFilterByDate}
+        sx={{
+          width: '230px', marginRight: 1, '& .MuiOutlinedInput-root': {
+            height: '35px',  // Ajustez la hauteur totale ici
+            fontSize: '0.8rem', // Optionnel : ajuster la taille du texte pour correspondre
+          },
+        }}>
           Rechercher
         </Button>
         <TextField
@@ -262,7 +279,7 @@ const DetailsSortieMois = () => {
           sx={{
             width: '230px', marginRight: 1, '& .MuiOutlinedInput-root': {
               height: '35px',  // Ajustez la hauteur totale ici
-              fontSize: '0.875rem', // Optionnel : ajuster la taille du texte pour correspondre
+              fontSize: '0.8rem', // Optionnel : ajuster la taille du texte pour correspondre
             },
           }}
           InputProps={{
@@ -273,8 +290,19 @@ const DetailsSortieMois = () => {
             ),
           }}
         />
-        <Button variant="contained" color='success' onClick={handleFilterByCamion}>Rechercher par camions</Button>
-        <Button variant="contained" color="success" onClick={handleResetFilter}>
+        {/* <Button variant="contained" color='success' 
+        onClick={handleFilterByCamion}  sx={{
+          padding: '4px 8px', // Réduction de l'espacement interne
+          fontSize: '0.8rem', // Réduction de la taille du texte
+          minWidth: 'auto',   // Réduction de la largeur minimale
+          height: '35px'
+        }}>Rechercher par camions</Button> */}
+        <Button variant="contained" color="success" onClick={handleResetFilter}
+         sx={{
+          padding: '4px 8px', // Réduction de l'espacement interne
+          minWidth: 'auto',   // Réduction de la largeur minimale
+          height: '35px'
+        }}>
           Afficher tout
         </Button>
       </Box>
@@ -285,7 +313,6 @@ const DetailsSortieMois = () => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1400px',
-          marginLeft: '130px',
         }}
       >
         <TableContainer component={Paper}>

@@ -396,8 +396,7 @@ const DetailsStockDOT = () => {
       
         // 4. Calculer les quantités
         const quantiteTheorique = quantiteInitial + quantiteEntree;
-        // const deltaTemperature = Math.abs(temperatureEntree - temperature_final) || 1; // Éviter un delta nul
-        // const quantiteReelle = quantiteEntree * alpha * deltaTemperature;
+      
        
         const quantiteReelEntree = calculateCorrectedQuantity(quantiteEntree, alpha, temperatureEntree);
        
@@ -497,7 +496,8 @@ const DetailsStockDOT = () => {
   }, []);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '110%', marginLeft: '80px', marginTop: '0px' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+     width: '100%', marginTop: '0px' }}>
       <Typography variant="h4" textAlign="center" gutterBottom color="success" >
         TABLEAU DES ETATS DE STOCKS MENSUELLES DU MOIS {month}
       </Typography>

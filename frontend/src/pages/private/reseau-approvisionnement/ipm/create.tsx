@@ -1,13 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Card, CardContent, TextField, Typography } from '@mui/material';
+import { Button, Card, CardContent, TextField, Typography, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { observer } from 'mobx-react-lite';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useStore } from '../../../../store/rootStore';
-import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import { useEffect, useState } from 'react';
 // Définir la validation du formulaire
 const validationSchema = Yup.object().shape({
@@ -64,7 +63,7 @@ const IpmCreate = () => {
    setValue('total_cotisations', cotisationTotal, { shouldValidate: true });
  }, [cotisationAdherant, cotisationEmployeur, setValue]);
   return (
-    <Card sx={{ marginLeft: '400px' }}>
+    <Card>
       <CardContent>
         <Typography variant="h6" gutterBottom color='success' textAlign='center'>
           Creation d'ipm

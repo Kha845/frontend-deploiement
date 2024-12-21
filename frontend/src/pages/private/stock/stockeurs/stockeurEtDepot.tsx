@@ -70,7 +70,7 @@ const StockeurEtDepot = () => {
 
       {/* Afficher les compartiments ajoutés */}
       {depots.length > 0 && (
-        <Box sx={{marginLeft: '650px'}}>
+        <Box>
           <Typography variant="h6" textAlign='center'>Depots ajoutés :</Typography>
           {depots.map((depot, index) => (
             <div key={index}>

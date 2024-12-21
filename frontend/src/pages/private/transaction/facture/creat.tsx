@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Card, CardContent, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Button, Card, CardContent, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { observer } from 'mobx-react-lite';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
@@ -70,15 +70,8 @@ const FactureCreate = () => {
         control,
         name: 'designations'
     });
-    // Fonction pour récupérer la liste des bons de commandes
-    const fetchBonDeCommande = async () => {
-        try {
-            const response = await factureStore.getListBonDeCommande();
-            setBonDeCommande(response); // Assurez-vous d'adapter cette ligne selon la structure de votre réponse
-        } catch (error) {
-            console.error('Erreur lors de la récupération bons de commande:', error);
-        }
-    };
+  
+
     // Fonction pour récupérer la liste des modes de paiement
     const fetchModeDePaiement = async () => {
         try {
@@ -89,7 +82,6 @@ const FactureCreate = () => {
         }
     };
     useEffect(() => {
-        fetchBonDeCommande();
         fetchModeDePaiement();
     }, []);
     useEffect(() => {
@@ -108,7 +100,7 @@ const FactureCreate = () => {
                 );
     
                 // Assure que le numéro de reference est défini dans la réponse avant de le définir
-                if (response.data && response.data.reference) {
+                if (response.data?.reference) {
                     setValue("reference", response.data.reference);
                 }
             } catch (error) {
@@ -172,7 +164,7 @@ const FactureCreate = () => {
         setOpenDialog(false); // Fermer la boîte de dialogue
     };
     return (
-        <Card sx={{marginLeft: '150px'}}>
+        <Card>
             <CardContent>
                 <Typography variant="h4" gutterBottom color='success' textAlign='center'>
                     Creation de facture SGF

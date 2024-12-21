@@ -33,7 +33,7 @@ const UserList = () => {
   }, []);
   if (!data) {
     console.log('data:',data);
-    return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+    return <Box textAlign='center' mt={5}><CircularProgress /></Box>;
   }
   // Filtrer les données en fonction de la valeur de recherche
   const filteredRows: UserRow[] = (utilisateurStore.rowData as unknown as UserRow[]).filter((row) => {
@@ -42,7 +42,7 @@ const UserList = () => {
            row.prenom.toLowerCase().includes(searchValue.toLowerCase());
   });
   return (
-    <Box>
+    <Box sx={{width:'100%'}}>
         <Typography variant='h4' className='text-center' color='success'>
           La liste des utilisateurs
         </Typography>
@@ -70,7 +70,7 @@ const UserList = () => {
             />
           </Box>
         </Box>
-        <Paper sx={{ height: 450, width: '110%' }}>
+        <Paper sx={{ height: 400, width: '100%' }}>
           <DataGrid
             rows={filteredRows.sort((a, b) => b.idUser - a.idUser)}
             columns={utilisateurStore.columns}

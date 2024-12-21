@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Card, CardContent, Typography, Button, CardActions, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useStore } from '../../../../store/rootStore';
@@ -230,7 +230,7 @@ const [lastInitiale, setLastInitiale] = useState<{
   }, []);
 
   if (!data) {
-    return <Box textAlign='center' mt={5} marginLeft='790px'><CircularProgress /></Box>;
+    return <Box textAlign='center' mt={5}><CircularProgress /></Box>;
   }
   return (
     <Box
@@ -239,7 +239,6 @@ const [lastInitiale, setLastInitiale] = useState<{
       flexDirection: 'column',
       alignItems: 'center',
       width: '100%',
-      marginLeft: '200px',
       marginTop: '0px',
     }}
 >
@@ -248,7 +247,6 @@ const [lastInitiale, setLastInitiale] = useState<{
   </Typography>
   
   <Box
- 
     sx={{
       display: 'flex',
       flexDirection: 'row',
@@ -257,8 +255,8 @@ const [lastInitiale, setLastInitiale] = useState<{
       maxWidth: '1200px',
     }}
   >
-    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center', }}>
-      <Card sx={{ width: '90%', borderRadius: 3, border: '1px solid', borderColor: 'green', color: 'green' }}>
+    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center',padding:'5px' }}>
+      <Card sx={{ width: '100%', borderRadius: 3, border: '1px solid', borderColor: 'green', color: 'green' }}>
         <CardContent sx={{ padding: 3 }}>
           <Typography variant="h5" component="div" gutterBottom textAlign="center" sx={{ marginBottom: 3 }}>
             Format Industriel
@@ -296,9 +294,8 @@ const [lastInitiale, setLastInitiale] = useState<{
         </CardActions>
       </Card>
     </Box>
-
-    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center' }}>
-      <Card sx={{ width: '90%', borderRadius: 3, border: '1px solid', borderColor: 'green', color: 'green' }}>
+    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center',padding:'5px' }}>
+      <Card sx={{ width: '100%', borderRadius: 3, border: '1px solid', borderColor: 'green', color: 'green' }}>
         <CardContent sx={{ padding: 3 }}>
           <Typography variant="h5" component="div" gutterBottom textAlign="center" sx={{ marginBottom: 3 }}>
             Format Commercial
@@ -349,8 +346,8 @@ const [lastInitiale, setLastInitiale] = useState<{
     }}
   >
     {/* Nouvelle carte 1 */}
-    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center' }}>
-      <Card sx={{ width: '90%', borderRadius: 3, border: '1px solid', borderColor: 'white', color: 'white' , background:'green'}}>
+    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center',padding:'5px'  }}>
+      <Card sx={{ width: '100%', borderRadius: 3, border: '1px solid', borderColor: 'white', color: 'white' , background:'green'}}>
         <CardContent sx={{ padding: 3 }}>
           <Typography variant="h5" component="div" gutterBottom textAlign="center" sx={{ marginBottom: 3 }}>
             SORTIE STOCK
@@ -391,14 +388,14 @@ const [lastInitiale, setLastInitiale] = useState<{
     </Box>
 
     {/* Nouvelle carte 2 */}
-    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center' }}>
-      <Card sx={{ width: '90%', borderRadius: 3, border: '1px solid', borderColor: 'white',backgroundColor:'green', color: 'white' }}>
+    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center' ,padding:'5px' }}>
+      <Card sx={{ width: '100%', borderRadius: 3, border: '1px solid', borderColor: 'white',backgroundColor:'green', color: 'white' }}>
         <CardContent sx={{ padding: 3 }}>
           <Typography variant="h5" component="div" gutterBottom textAlign="center" sx={{ marginBottom: 3 }}>
             ETAT STOCK
           </Typography>
-          <TableContainer component={Paper}>
-        <Table>
+        <TableContainer component={Paper}>
+        <Table sx={{ width: '100%'}}>
             <TableHead>
                 <TableRow>
                     <TableCell><strong>Désignation</strong></TableCell>

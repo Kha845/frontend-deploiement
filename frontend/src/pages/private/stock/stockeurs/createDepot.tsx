@@ -30,7 +30,7 @@ const DepotCreate = ({ onSubmitDepot }: { onSubmitDepot: (data: DepotData) => vo
     reset();
   };
   return (
-    <Card sx={{marginLeft: '650px'}}>
+    <Card>
       <CardContent>
         <Typography variant="h4" gutterBottom color='success' textAlign='center'>
           Création des Depots

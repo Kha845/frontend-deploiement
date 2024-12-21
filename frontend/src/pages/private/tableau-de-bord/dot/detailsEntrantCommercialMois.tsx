@@ -213,7 +213,6 @@ useEffect(() => {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '10px',
         marginTop: '0px',
       }}
     >
@@ -283,7 +282,6 @@ useEffect(() => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1400px',
-          marginLeft: '130px',
         }}
       >
         <TableContainer component={Paper}>

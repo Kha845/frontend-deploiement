@@ -214,7 +214,6 @@ useEffect(() => {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '10px',
         marginTop: '0px',
       }}
     >
@@ -224,7 +223,7 @@ useEffect(() => {
             </IconButton>
         </Box>
 
-      <Typography variant="h4" textAlign="center" gutterBottom color="success" marginLeft='11.5%'>
+      <Typography variant="h4" textAlign="center" gutterBottom color="success">
       TABLEAU DES ENTREES DE CARBURANTS EN FORMAT COMMERCIAL DE ORYX POUR LE MOIS {month}
       </Typography>
       <Box
@@ -284,7 +283,7 @@ useEffect(() => {
           justifyContent: 'space-between',
           width: '100%',
           maxWidth: '1400px',
-          marginLeft: '130px',
+         
         }}
       >
         <TableContainer component={Paper}>

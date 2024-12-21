@@ -206,10 +206,9 @@ const DetailsStock = () => {
         
           // 2. Vérifier les températures
           const temperatureEntree = parseFloat(entreeItem.temperature_initial) ;
-          // const temperatureFinale = parseFloat(entreeItem.temperature_final) || 15;
+         
           console.log('temperature entree', entreeItem.temperature_initial);
-          // console.log('temperature final', entreeItem.temperatureFinale);
-          // 3. Calculer alpha
+        
           const alpha = (alphaRanges[type as keyof typeof alphaRanges]?.min + alphaRanges[type as keyof typeof alphaRanges]?.max) / 2 || 0.00065;
         
           // 4. Calculer les quantités
@@ -401,9 +400,7 @@ const DetailsStock = () => {
       
         // 4. Calculer les quantités
         const quantiteTheorique = quantiteInitial + quantiteEntree;
-        // const deltaTemperature = Math.abs(temperatureEntree - temperature_final) || 1; // Éviter un delta nul
-        // const quantiteReelle = quantiteEntree * alpha * deltaTemperature;
-       
+        
         const quantiteReelEntree = calculateCorrectedQuantity(quantiteEntree, alpha, temperatureEntree);
        
         newTotalsQuantite[type as keyof typeof newTotalsQuantite].reelle += quantiteReelEntree;
@@ -502,7 +499,8 @@ const DetailsStock = () => {
   }, []);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '110%', marginLeft: '80px', marginTop: '0px' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+     width: '100%',  marginTop: '0px' }}>
       <Typography variant="h4" textAlign="center" gutterBottom color="success" >
         TABLEAU DES ETATS DE STOCKS MENSUELLES DU MOIS {month}
       </Typography>
@@ -516,7 +514,6 @@ const DetailsStock = () => {
         gap: 2,
         marginTop: 2,
         justifyContent: 'center',
-        alignItems: 'left',
         width: '100%',
         marginBottom: '20px'
       }}>
@@ -534,9 +531,10 @@ const DetailsStock = () => {
           onChange={(e) => handleDateRangeChange(interval.start, e.target.value)}
           style={{ width: '300px', height: '50px' }}
         />
-        <Button onClick={handleResetFilter} color='success' sx={{border:'solid 1px', borderColor:'green'}}>Afficher tout</Button>
+        <Button onClick={handleResetFilter} color='success'
+         sx={{border:'solid 1px', borderColor:'green',width:'300px'}}>Afficher tout</Button>
       </Box>
-      <TableContainer component={Paper} sx={{ width: '100%' }}>
+      <TableContainer component={Paper} >
         <Table>
           <TableHead sx={{ backgroundColor: 'green' }}>
             <TableRow>

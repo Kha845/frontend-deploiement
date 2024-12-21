@@ -59,7 +59,7 @@ const FournisseurCreate = () => {
     setOpenDialog(false); // Fermer la boîte de dialogue
   };
   return (
-    <Card sx={{marginLeft: '150px'}}>
+    <Card>
       <CardContent>
         <Typography variant="h6" gutterBottom color='success' textAlign='center'>
           Creation du fournisseur

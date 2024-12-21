@@ -20,13 +20,8 @@ const validationSchema = Yup.object().shape({
     })
   ),
   UniteDeMesure: Yup.string().required('Unite de mesure est requis'),
-  // idCamionCiterne: Yup.string().required('Camion est requis'),
   numeroBonDeLivraison: Yup.number().required('Numero bon de livraison est requis'),
 });
-// interface Camions {
-//   id: number;
-//   immatricule: string;
-// }
 const EditBonDeLivraison = () => {
   const navigate = useNavigate();
   const { rootStore: { bonDeLivraisonStore } } = useStore();
@@ -53,27 +48,9 @@ const EditBonDeLivraison = () => {
   });
 
   const onSubmit = async (data: any) => {
-    // if (data.dateLivraison) {
-    //   data.dateLivraison = new Date(data.dateLivraison).toISOString().split('T')[0];
-    // }
     setFormData(data);
     setOpenDialog(true); // Ouvrir la boîte de dialogue uniquement si pas d'erreurs
   };
-
-  // const fetchCamions = async () => {
-  //   try {
-  //     const response = await bonDeLivraisonStore.getListCamions();
-  //     setCamions(response); // Assurez-vous d'adapter cette ligne selon la structure de votre réponse
-  //   } catch (error) {
-  //     console.error('Erreur lors de la récupération des camions:', error);
-  //   }
-  // };
-  // // Utiliser useEffect pour charger les camions au montage du composant
-  // useEffect(() => {
-  //   fetchCamions();
-  // }, []);
-
-  // Confirmer la mise a jour du bon de livraison
   const handleConfirm = async () => {
     try {
       if (id && formData) {
@@ -130,7 +107,7 @@ const EditBonDeLivraison = () => {
   }, [id]);
 
   return (
-    <Card sx={{ marginLeft: '200px' , width: '110%'}}>
+    <Card sx={{ width: '100%'}}>
       <CardContent>
         <Typography variant="h4" gutterBottom color='success' textAlign='center'>
           Edition de bon  de livraison

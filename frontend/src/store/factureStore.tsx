@@ -39,7 +39,7 @@ export default class FactureStore {
         { field: 'reference', headerName: 'Reference', width: 100 },
         { field: 'status', headerName: 'Status', width: 100 },
         {
-            field: 'designations', headerName: 'Designation', width: 300,
+            field: 'designations', headerName: 'Designation', width: 200,
             renderCell: (params) => {
                 // Vérifier si designations est une chaîne JSON et la parser
                 let designations = [];
@@ -54,70 +54,70 @@ export default class FactureStore {
             },
         },
         {
-            field: 'format', headerName: 'Format', width: 100,
+            field: 'format', headerName: 'Format', width: 150,
             renderCell: (params) => {
                 const format = params.row?.format;
                 return format ? format : "-";
             },
         },
-        {
-            field: 'prixUnitaire', headerName: 'P-Unitaire', width: 300,
-            renderCell: (params) => {
-                let designations = [];
-                try {
-                    designations = Array.isArray(JSON.parse(params.row.designations)) ? JSON.parse(params.row.designations) : [];
-                } catch (e) {
-                    console.error('Erreur de parsing de designations:', e);
-                }
-                return designations.map((item: { prixUnitaire: number }) => item.prixUnitaire.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' })).join(', ');
-            },
-        },
-        {
-            field: 'volume_ambiant', headerName: 'Quantite volume ambiant', width: 150,
-            renderCell: (params) => {
-                let designations = [];
-                try {
-                    designations = Array.isArray(JSON.parse(params.row.designations)) ? JSON.parse(params.row.designations) : [];
-                } catch (e) {
-                    console.error('Erreur de parsing de designations:', e);
-                }
-                return designations.map((item: { volume_ambiant: number }) => item.volume_ambiant).join(', ');
-            },
-        },
-        {
-            field: 'montant', headerName: 'Montant', width: 100,
-            renderCell: (params) => {
-                let designations = [];
-                try {
-                    designations = Array.isArray(JSON.parse(params.row.designations)) ? JSON.parse(params.row.designations) : [];
-                } catch (e) {
-                    console.error('Erreur de parsing de designations:', e);
-                }
-                return designations.map((item: { montant: number }) => item.montant.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' })).join(', ');
-            },
-        },
-        { field: 'montant_total', headerName: 'Total HT', width: 150 },
-        {
-            field: 'montantTVA', headerName: 'TVA', width: 200,
-            renderCell: (params) => {
-                const tva = 0.18;
-                return (params.row.montant_total * tva);
-            }
-        },
-        {
-            field: 'montantTTC', headerName: 'Total TTC', width: 200,
-            renderCell: (params) => {
-                const tva = 0.18;
-                const montantTTC = (params.row.montant_total * tva) + params.row.montant_total;
-                return montantTTC;
-            },
-        },
-        { field: 'UniteDeMesure', headerName: 'Unite de mesure', width: 150 },
+        // {
+        //     field: 'prixUnitaire', headerName: 'P-Unitaire', width: 100,
+        //     renderCell: (params) => {
+        //         let designations = [];
+        //         try {
+        //             designations = Array.isArray(JSON.parse(params.row.designations)) ? JSON.parse(params.row.designations) : [];
+        //         } catch (e) {
+        //             console.error('Erreur de parsing de designations:', e);
+        //         }
+        //         return designations.map((item: { prixUnitaire: number }) => item.prixUnitaire.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' })).join(', ');
+        //     },
+        // },
+        // {
+        //     field: 'volume_ambiant', headerName: 'Quantite volume ambiant', width: 100,
+        //     renderCell: (params) => {
+        //         let designations = [];
+        //         try {
+        //             designations = Array.isArray(JSON.parse(params.row.designations)) ? JSON.parse(params.row.designations) : [];
+        //         } catch (e) {
+        //             console.error('Erreur de parsing de designations:', e);
+        //         }
+        //         return designations.map((item: { volume_ambiant: number }) => item.volume_ambiant).join(', ');
+        //     },
+        // },
+        // {
+        //     field: 'montant', headerName: 'Montant', width: 100,
+        //     renderCell: (params) => {
+        //         let designations = [];
+        //         try {
+        //             designations = Array.isArray(JSON.parse(params.row.designations)) ? JSON.parse(params.row.designations) : [];
+        //         } catch (e) {
+        //             console.error('Erreur de parsing de designations:', e);
+        //         }
+        //         return designations.map((item: { montant: number }) => item.montant.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' })).join(', ');
+        //     },
+        // },
+        // { field: 'montant_total', headerName: 'Total HT', width: 100 },
+        // {
+        //     field: 'montantTVA', headerName: 'TVA', width: 100,
+        //     renderCell: (params) => {
+        //         const tva = 0.18;
+        //         return (params.row.montant_total * tva);
+        //     }
+        // },
+        // {
+        //     field: 'montantTTC', headerName: 'Total TTC', width: 100,
+        //     renderCell: (params) => {
+        //         const tva = 0.18;
+        //         const montantTTC = (params.row.montant_total * tva) + params.row.montant_total;
+        //         return montantTTC;
+        //     },
+        // },
+        // { field: 'UniteDeMesure', headerName: 'Unite de mesure', width: 100 },
         { field: 'date', headerName: 'Date', width: 100 },
         {
             field: 'etat',
             headerName: 'État',
-            width: 180,
+            width: 300,
             renderCell: (params) => {
                 const etat = params.row.etat;
 
@@ -136,7 +136,7 @@ export default class FactureStore {
         {
             field: 'idModePaiement',
             headerName: 'Mode Paiement',
-            width: 300, // Largeur ajustée pour inclure plus de contenu
+            width: 200, // Largeur ajustée pour inclure plus de contenu
             renderCell: (params) => {
                 // Récupérer les détails des modes de paiement associés
                 const modePaiementDetails = params.row?.modesPaiement; // Tableau des modes de paiement
@@ -158,7 +158,7 @@ export default class FactureStore {
         {
             field: 'actions',
             headerName: 'Action',
-            width: 250,
+            width: 350,
             sortable: false,
             filterable: false,
             renderCell: (params) => (
@@ -193,7 +193,7 @@ export default class FactureStore {
         {
             field: 'status',
             headerName: 'Statut',
-            width: 100,
+            width: 80,
             renderCell: (params) => {
                 // Si le statut est "rejetée", on ajoute un badge rouge
                 if (params.value === 'rejetée') {
@@ -213,7 +213,7 @@ export default class FactureStore {
             }
         },
         {
-            field: 'designations', headerName: 'Designation', width: 500,
+            field: 'designations', headerName: 'Designation', width: 300,
             renderCell: (params) => {
                 // Vérifier si designations est une chaîne JSON et la parser
                 let designations = [];
@@ -231,7 +231,7 @@ export default class FactureStore {
         {
             field: 'actions',
             headerName: 'Action',
-            width: 450,
+            width: 200,
             sortable: false,
             filterable: false,
             renderCell: (params) => (
@@ -249,7 +249,7 @@ export default class FactureStore {
                 </Box>
             ),
         },
-        { field: 'motif', headerName: 'Motif', width: 230 },
+        { field: 'motif', headerName: 'Motif', width: 100 },
     ];
     constructor(rootStore: IRootStore) {
         makeObservable(this, {

@@ -209,7 +209,6 @@ const DetailsEntrantIndustrielMoisORYX = () => {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        marginLeft: '5px',
         marginTop: '0px',
       }}
     >

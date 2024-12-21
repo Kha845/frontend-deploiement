@@ -234,7 +234,7 @@ const FactureStockeur = () => {
             fetchStockeurs();
           },[])
     return (
-        <Card sx={{marginLeft: '150px'}}>
+        <Card>
             <CardContent>
                 <Typography variant="h4" gutterBottom color='success' textAlign='center'>
                     Enregistrement d'une nouvelle facture stockeur et frais de passage SGF
